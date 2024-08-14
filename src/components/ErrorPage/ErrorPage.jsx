@@ -1,11 +1,10 @@
-
-
 const ErrorPage = () => {
-    return (
-        <div>
-            <h2>Ooops! Not Found</h2>
-        </div>
-    );
+  return (
+    <div>
+      <h2>Ooops! Not Found</h2>
+      <Link to="/">Go back to Home</Link>
+    </div>
+  );
 };
 
 export default ErrorPage;
