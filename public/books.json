@@ -8,7 +8,7 @@
     "totalPages": 210,
     "rating": 4.2,
     "category": "Self-Help",
-    "tags": ["Dating", "Relationships", "Self-Improvement"],
+    "tags": ["Dating", "Relationships"],
     "publisher": "CreateSpace Independent Publishing",
     "yearOfPublishing": 2017
   },
@@ -21,7 +21,7 @@
     "totalPages": 180,
     "rating": 4.6,
     "category": "Finance",
-    "tags": ["Finance", "Mindset", "Personal Growth"],
+    "tags": ["Finance", "Mindset"],
     "publisher": "Indie Author",
     "yearOfPublishing": 2022
   },
@@ -34,7 +34,7 @@
     "totalPages": 464,
     "rating": 4.9,
     "category": "Young Adult",
-    "tags": ["Racism", "Social Justice", "Coming of Age"],
+    "tags": ["Racism", "Social Justice"],
     "publisher": "Balzer + Bray",
     "yearOfPublishing": 2017
   },
@@ -47,7 +47,7 @@
     "totalPages": 120,
     "rating": 4.3,
     "category": "Education",
-    "tags": ["Scholarships", "Education", "Planning"],
+    "tags": ["Scholarships", "Planning"],
     "publisher": "SuperCollege LLC",
     "yearOfPublishing": 2020
   },
@@ -60,7 +60,7 @@
     "totalPages": 960,
     "rating": 4.7,
     "category": "Law",
-    "tags": ["Law", "Family Law", "Reference"],
+    "tags": ["Law", "Family Law"],
     "publisher": "Thomson Reuters",
     "yearOfPublishing": 2021
   },
@@ -73,7 +73,7 @@
     "totalPages": 144,
     "rating": 4.8,
     "category": "Religion",
-    "tags": ["Faith", "Christianity", "Spiritual Growth"],
+    "tags": ["Faith", "Christianity"],
     "publisher": "Crossway",
     "yearOfPublishing": 2014
   },
@@ -86,7 +86,7 @@
     "totalPages": 240,
     "rating": 4.5,
     "category": "Self-Help",
-    "tags": ["Mindfulness", "Communication", "Personal Growth"],
+    "tags": ["Mindfulness", "Communication"],
     "publisher": "Harmony",
     "yearOfPublishing": 2017
   },
@@ -99,7 +99,7 @@
     "totalPages": 144,
     "rating": 4.9,
     "category": "Religion",
-    "tags": ["Christianity", "Apologetics", "Youth"],
+    "tags": ["Christianity", "Apologetics"],
     "publisher": "David C Cook",
     "yearOfPublishing": 2016
   },
@@ -112,7 +112,7 @@
     "totalPages": 592,
     "rating": 4.3,
     "category": "Fantasy",
-    "tags": ["Fantasy", "Adventure", "Epic"],
+    "tags": ["Fantasy", "Adventure"],
     "publisher": "Tor Books",
     "yearOfPublishing": 2019
   }
