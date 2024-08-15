@@ -1,0 +1,39 @@
+import { useLoaderData, useParams } from "react-router-dom";
+
+const BookDetails = () => {
+  try {
+    const books = useLoaderData();
+    const { bookId } = useParams();
+    const bookIdInt = parseInt(bookId);
+
+    // Log data for debugging
+    console.log('Books:', books);
+    console.log('Book ID Int:', bookIdInt);
+
+    // Handle case where books is not an array
+    if (!Array.isArray(books)) {
+      throw new Error('Books data is not an array');
+    }
+
+    const book = books.find((book) => parseInt(book.bookId) === bookIdInt);
+
+    // Log the result of find()
+    console.log('Found Book:', book);
+
+    if (!book) {
+      return <div>Book not found</div>;
+    }
+
+    return (
+      <div>
+        <h1>{book.title}</h1>
+        <p>{book.author}</p>
+      </div>
+    );
+  } catch (error) {
+    console.error('Error in BookDetails:', error);
+    return <div>An error occurred: {error.message}</div>;
+  }
+};
+
+export default BookDetails;

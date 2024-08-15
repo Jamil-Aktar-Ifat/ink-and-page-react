@@ -3,17 +3,20 @@ import { IoMdStarOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const Book = ({ book }) => {
-  const { image, bookName, author, category, rating, tags } = book;
+  const { bookId, image, bookName, author, category, rating, tags } = book;
+  // console.log(bookId)
   return (
-    <Link to="/bookDetails" className="card bg-base-100 border-2 px-5">
+    <Link
+      to={`/bookDetails/${bookId}`}
+      className="card bg-base-100 border-2 px-5"
+    >
       <figure className="mt-10 bg-[#F3F3F3] rounded-sm m-8 p-5">
-        <img src={image} alt="image" className="" />
+        <img src={image} alt="image" />
       </figure>
       <div className="flex gap-3">
-        {tags.map((tag) => (
-          <div>
+        {tags.map((tag, idx) => (
+          <div key={idx}>
             <p className="bg-[#23BE0A0D] text-[#23BE0A] px-3 py-2 rounded-lg">
-              {" "}
               {tag}
             </p>
           </div>
