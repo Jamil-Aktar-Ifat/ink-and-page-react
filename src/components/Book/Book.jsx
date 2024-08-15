@@ -1,4 +1,4 @@
-import "./Book.css";
+
 import { IoMdStarOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 
@@ -8,10 +8,10 @@ const Book = ({ book }) => {
   return (
     <Link
       to={`/bookDetails/${bookId}`}
-      className="card bg-base-100 border-2 px-5"
+      className="card bg-base-100 border-2 px-5 rounded-md"
     >
       <figure className="mt-10 bg-[#F3F3F3] rounded-sm m-8 p-5">
-        <img src={image} alt="image" />
+        <img className="w-[350px] h-[300px]" src={image} alt="image" />
       </figure>
       <div className="flex gap-3">
         {tags.map((tag, idx) => (
@@ -29,7 +29,7 @@ const Book = ({ book }) => {
         <p>{category}</p>
         <div className="flex items-center gap-1">
           <p>{rating}</p>
-          <IoMdStarOutline className="star text-xl"></IoMdStarOutline>
+          <IoMdStarOutline className="text-orange-400 text-xl"></IoMdStarOutline>
         </div>
       </div>
     </Link>
