@@ -1,6 +1,10 @@
 import { FaAngleDown } from "react-icons/fa6";
+import { useLoaderData } from "react-router-dom";
 
 const ListedBooks = () => {
+  const books = useLoaderData();
+  console.log(books);
+
   return (
     <div>
       <h2 className=" text-xl font-bold text-center py-7 rounded-md bg-[#1313130D]">

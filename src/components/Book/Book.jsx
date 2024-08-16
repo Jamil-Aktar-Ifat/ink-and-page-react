@@ -1,6 +1,6 @@
-
 import { IoMdStarOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Book = ({ book }) => {
   const { bookId, image, bookName, author, category, rating, tags } = book;
@@ -34,6 +34,10 @@ const Book = ({ book }) => {
       </div>
     </Link>
   );
+};
+
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
 };
 
 export default Book;
