@@ -54,7 +54,7 @@ const ListedBooks = () => {
           />
           <div
             role="tabpanel"
-            className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+            className="tab-content bg-base-100 border-y-base-300 rounded-box p-6"
           >
             Read Books
           </div>
@@ -63,13 +63,13 @@ const ListedBooks = () => {
             type="radio"
             name="my_tabs_2"
             role="tab"
-            className="tab"
+            className="tab border-none"
             aria-label="Wishlist Books"
             defaultChecked
           />
           <div
             role="tabpanel"
-            className="tab-content bg-base-100 border-base-300 rounded-box p-6"
+            className="tab-content bg-base-100 border-y-base-300 rounded-box p-6"
           >
             {seletedBooks.map((book) => (
               <BookCard key={book.bookId} book={book}></BookCard>
