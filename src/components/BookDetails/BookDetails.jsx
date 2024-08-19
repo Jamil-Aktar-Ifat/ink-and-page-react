@@ -44,7 +44,7 @@ const BookDetails = () => {
     const wishlistBooks = getWishlistBooks();
     if (wishlistBtnDisabled) {
       e.preventDefault();
-      toast.warning("This book is already in Read Books list!!");
+      toast.warning("Cannot add book that exists in Read Books list!!");
       return;
     }
     if (wishlistBooks.includes(bookIdInt)) {

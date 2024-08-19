@@ -52,6 +52,7 @@ const ListedBooks = () => {
         </details>
       </div>
 
+      {/* tab list  */}
       <div>
         <div role="tablist" className="tabs tabs-lifted">
           <input
@@ -60,6 +61,7 @@ const ListedBooks = () => {
             role="tab"
             className="tab"
             aria-label="Read Books"
+            defaultChecked
           />
           <div
             role="tabpanel"
@@ -78,9 +80,8 @@ const ListedBooks = () => {
             type="radio"
             name="my_tabs_2"
             role="tab"
-            className="tab border-none"
+            className="tab"
             aria-label="Wishlist Books"
-            defaultChecked
           />
           <div
             role="tabpanel"
