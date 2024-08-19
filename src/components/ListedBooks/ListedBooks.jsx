@@ -9,6 +9,30 @@ const ListedBooks = () => {
 
   const [readBooks, setReadBooks] = useState([]);
   const [wishlistBooks, setWishlistBooks] = useState([]);
+  const [sortedReadBooks, setSortedReadBooks] = useState([]);
+  const [sortedWishlistBooks, setSortedWishlistBooks] = useState([]);
+
+  const handleBooksFilter = (filter) => {
+    const sortBooks = (books, key) => {
+      return [...books].sort((a, b) => {
+        if (key === "rating" || key === "totalPages" || key === "publishYear") {
+          return b[key] - a[key];
+        }
+        return 0;
+      });
+    };
+
+    if (filter === "rating") {
+      setSortedReadBooks(sortBooks(readBooks, "rating"));
+      setSortedWishlistBooks(sortBooks(wishlistBooks, "rating"));
+    } else if (filter === "number-of-pages") {
+      setSortedReadBooks(sortBooks(readBooks, "totalPages"));
+      setSortedWishlistBooks(sortBooks(wishlistBooks, "totalPages"));
+    } else if (filter === "publish-year") {
+      setSortedReadBooks(sortBooks(readBooks, "publishYear"));
+      setSortedWishlistBooks(sortBooks(wishlistBooks, "publishYear"));
+    }
+  };
 
   useEffect(() => {
     const readBookIds = getReadBooks();
@@ -24,28 +48,32 @@ const ListedBooks = () => {
 
       setReadBooks(filteredReadBooks);
       setWishlistBooks(filteredWishlistBooks);
+
+      // Initialize with default sorting (e.g., by rating)
+      setSortedReadBooks(filteredReadBooks);
+      setSortedWishlistBooks(filteredWishlistBooks);
     }
   }, [books]);
 
   return (
     <div>
-      <h2 className=" text-xl font-bold text-center py-7 rounded-md bg-[#1313130D]">
+      <h2 className="text-xl font-bold text-center py-7 rounded-md bg-[#1313130D]">
         Books
       </h2>
       {/* sort button  */}
-      <div className="text-center mt-10 mb-24 ">
-        <details className="dropdown ">
+      <div className="text-center mt-10 mb-24">
+        <details className="dropdown">
           <summary className="btn p-4 font-semibold bg-[#23BE0A] text-white">
-            Sort By <FaAngleDown></FaAngleDown>
+            Sort By <FaAngleDown />
           </summary>
-          <ul className="menu dropdown-content bg-[#1313130D] rounded-box w-40 ">
-            <li>
+          <ul className="menu dropdown-content bg-[#1313130D] rounded-box w-40">
+            <li onClick={() => handleBooksFilter("rating")}>
               <a>Rating</a>
             </li>
-            <li>
+            <li onClick={() => handleBooksFilter("number-of-pages")}>
               <a>Number of Pages</a>
             </li>
-            <li>
+            <li onClick={() => handleBooksFilter("publish-year")}>
               <a>Publish Year</a>
             </li>
           </ul>
@@ -67,9 +95,9 @@ const ListedBooks = () => {
             role="tabpanel"
             className="tab-content bg-base-100 border-y-base-300 rounded-box p-6"
           >
-            {readBooks.length > 0 ? (
-              readBooks.map((book) => (
-                <BookCard key={book.bookId} book={book}></BookCard>
+            {sortedReadBooks.length > 0 ? (
+              sortedReadBooks.map((book) => (
+                <BookCard key={book.bookId} book={book} />
               ))
             ) : (
               <p>No books in the read list.</p>
@@ -87,9 +115,9 @@ const ListedBooks = () => {
             role="tabpanel"
             className="tab-content bg-base-100 border-y-base-300 rounded-box p-6"
           >
-            {wishlistBooks.length > 0 ? (
-              wishlistBooks.map((book) => (
-                <BookCard key={book.bookId} book={book}></BookCard>
+            {sortedWishlistBooks.length > 0 ? (
+              sortedWishlistBooks.map((book) => (
+                <BookCard key={book.bookId} book={book} />
               ))
             ) : (
               <p>No books in the wishlist.</p>

@@ -49,12 +49,11 @@ const PagesToRead = () => {
   };
 
   return (
-    <div>
-      <h2 className="font-bold text-center">Pages to Read</h2>
+    <div className="bg-[#13131308] rounded-lg py-10">
       <BarChart
         className="mx-auto"
         width={1100}
-        height={500}
+        height={600}
         data={data}
         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
       >
