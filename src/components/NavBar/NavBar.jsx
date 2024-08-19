@@ -47,9 +47,11 @@ const NavBar = () => {
           <NavLink to="/pagesToRead">Pages to Read</NavLink>
         </nav>
       </div>
-      <div className="navbar-end gap-4 ">
-        <a className="btn bg-[#23BE0A] text-white">Sign in</a>
-        <a className="btn bg-[#59C6D2] text-white">Sign up</a>
+      <div className="navbar-end gap-4 flex items-center ">
+        <a className="btn bg-[#23BE0A] text-white text-center items-center hidden md:flex">
+          Sign in
+        </a>
+        <a className="btn bg-[#59C6D2] text-white ">Sign up</a>
       </div>
     </div>
   );
