@@ -4,8 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 import {
   getReadBooks,
   getWishlistBooks,
-  saveReadBooks,
-  saveWishlistBooks,
+  saveReadBook,
+  saveWishlistBook,
 } from "../utility/localStorage";
 import { useState, useEffect } from "react";
 
@@ -30,7 +30,7 @@ const BookDetails = () => {
   }, [bookIdInt]);
 
   const handleReadBooks = () => {
-    saveReadBooks(bookIdInt);
+    saveReadBook(bookIdInt);
     toast.success("You've added the book to your Read Books!");
     setWishlistBtnDisabled(true);
   };
@@ -41,7 +41,7 @@ const BookDetails = () => {
       toast.warning("the book is already in read");
       return;
     }
-    saveWishlistBooks(bookIdInt);
+    saveWishlistBook(bookIdInt);
     toast.success("You've added the book to your wishlist!");
   };
   return (

@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { useLoaderData } from "react-router-dom";
-import { getStoredBooks } from "../utility/localStorage";
+import { getReadBooks, getWishlistBooks } from "../utility/localStorage";
 import BookCard from "../BookCard/BookCard";
 
 const ListedBooks = () => {
   const books = useLoaderData();
 
-  const { readBooks, setReadBooks } = useState([]);
-  const { wishlistBooks, setWishlistBooks } = useState([]);
+  const [readBooks, setReadBooks] = useState([]);
+  const [wishlistBooks, setWishlistBooks] = useState([]);
 
   useEffect(() => {
     const readBookIds = getReadBooks();
     const wishlistBookIds = getWishlistBooks();
-    const storedBookIds = getStoredBooks();
+
     if (books.length > 0) {
-      const listedBooks = books.filter((book) =>
-        storedBookIds.includes(book.bookId)
+      const filteredReadBooks = books.filter((book) =>
+        readBookIds.includes(book.bookId)
       );
-      setSelectedBooks(listedBooks);
-      console.log(listedBooks);
+      const filteredWishlistBooks = books.filter((book) =>
+        wishlistBookIds.includes(book.bookId)
+      );
+
+      setReadBooks(filteredReadBooks);
+      setWishlistBooks(filteredWishlistBooks);
     }
   }, [books]);
 
@@ -61,9 +65,13 @@ const ListedBooks = () => {
             role="tabpanel"
             className="tab-content bg-base-100 border-y-base-300 rounded-box p-6"
           >
-            {seletedBooks.map((book) => (
-              <BookCard key={book.bookId} book={book}></BookCard>
-            ))}
+            {readBooks.length > 0 ? (
+              readBooks.map((book) => (
+                <BookCard key={book.bookId} book={book}></BookCard>
+              ))
+            ) : (
+              <p>No books in the read list.</p>
+            )}
           </div>
 
           <input
@@ -78,9 +86,13 @@ const ListedBooks = () => {
             role="tabpanel"
             className="tab-content bg-base-100 border-y-base-300 rounded-box p-6"
           >
-            {seletedBooks.map((book) => (
-              <BookCard key={book.bookId} book={book}></BookCard>
-            ))}
+            {wishlistBooks.length > 0 ? (
+              wishlistBooks.map((book) => (
+                <BookCard key={book.bookId} book={book}></BookCard>
+              ))
+            ) : (
+              <p>No books in the wishlist.</p>
+            )}
           </div>
         </div>
       </div>
