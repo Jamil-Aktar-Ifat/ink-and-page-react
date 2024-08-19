@@ -30,19 +30,29 @@ const BookDetails = () => {
   }, [bookIdInt]);
 
   const handleReadBooks = () => {
-    saveReadBook(bookIdInt);
-    toast.success("You've added the book to your Read Books!");
-    setWishlistBtnDisabled(true);
+    const readBooks = getReadBooks();
+    if (readBooks.includes(bookIdInt)) {
+      toast.warn("This book is already in the Read Books list!");
+    } else {
+      saveReadBook(bookIdInt);
+      toast.success("Successfully added to the Read Books list!");
+      setWishlistBtnDisabled(true);
+    }
   };
 
   const handleWishList = (e) => {
+    const wishlistBooks = getWishlistBooks();
     if (wishlistBtnDisabled) {
       e.preventDefault();
-      toast.warning("the book is already in read");
+      toast.warning("This book is already in Read Books list!!");
       return;
     }
-    saveWishlistBook(bookIdInt);
-    toast.success("You've added the book to your wishlist!");
+    if (wishlistBooks.includes(bookIdInt)) {
+      toast.warn("This book is already in the Wishlist!!");
+    } else {
+      saveWishlistBook(bookIdInt);
+      toast.success("Successfully added to Wish list!!");
+    }
   };
   return (
     <div>
