@@ -13,17 +13,12 @@ import PropTypes from "prop-types";
 
 const PagesToRead = () => {
   const [data, setData] = useState([]);
-  // eslint-disable-next-line no-unused-vars
-  const [books, setBooks] = useState([]);
   const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
 
   useEffect(() => {
     fetch("/books.json")
       .then((res) => res.json())
       .then((data) => {
-        setBooks(data);
-        // console.log(books)
-
         const readBookIds = getReadBooks();
 
         const readBooks = data.filter((book) =>
@@ -31,8 +26,8 @@ const PagesToRead = () => {
         );
 
         const chartData = readBooks.map((book) => ({
-          name: book.bookName,
-          pages: book.totalPages,
+          Name: book.bookName,
+          Pages: book.totalPages,
         }));
 
         setData(chartData);
@@ -58,17 +53,17 @@ const PagesToRead = () => {
       <h2 className="font-bold text-center">Pages to Read</h2>
       <BarChart
         className="mx-auto"
-        width={1000}
+        width={1100}
         height={500}
         data={data}
         margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
+        <XAxis dataKey="Name" />
         <YAxis />
         <Tooltip />
         <Bar
-          dataKey="pages"
+          dataKey="Pages"
           shape={<TriangleBar />}
           label={{ position: "top" }}
         >
@@ -80,7 +75,6 @@ const PagesToRead = () => {
     </div>
   );
 };
-
 PagesToRead.propTypes = {
   fill: PropTypes.func,
   x: PropTypes.number,
@@ -88,5 +82,4 @@ PagesToRead.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
 };
-
 export default PagesToRead;
