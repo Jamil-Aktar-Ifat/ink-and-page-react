@@ -3,7 +3,7 @@
     "bookId": 1,
     "bookName": "The Dating Playbook for Men",
     "author": "Andrew Ferebee",
-    "image": "media/book-1.png",
+    "image": "./media/book-1.png",
     "review": "A modern guide for men looking to improve their dating life and build meaningful relationships.",
     "totalPages": 210,
     "rating": 4.2,

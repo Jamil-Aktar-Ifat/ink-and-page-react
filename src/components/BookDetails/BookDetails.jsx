@@ -60,7 +60,7 @@ const BookDetails = () => {
         <figure>
           <img
             className="bg-[#1313130D] h-[600px] p-20 rounded-md m-4"
-            src={`../../../public/${book.image}`}
+            src={`/${book.image}`}
             alt={book.bookName}
           />
         </figure>
