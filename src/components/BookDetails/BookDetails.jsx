@@ -1,20 +1,49 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { saveBook } from "../utility/localStorage";
+import {
+  getReadBooks,
+  getWishlistBooks,
+  saveReadBooks,
+  saveWishlistBooks,
+} from "../utility/localStorage";
+import { useState, useEffect } from "react";
 
 const BookDetails = () => {
   const books = useLoaderData();
   const { bookId } = useParams();
   const bookIdInt = parseInt(bookId);
+  const [wishlistBtnDisabled, setWishlistBtnDisabled] = useState(false);
 
   const book = books.find((book) => parseInt(book.bookId) === bookIdInt);
 
-  const handleWishList = () => {
-    saveBook(bookIdInt);
-    toast.success("You've added the book to your wishlist!");
+  useEffect(() => {
+    const readBooks = getReadBooks();
+    const wishlistBooks = getWishlistBooks();
+
+    if (readBooks.includes(bookIdInt)) {
+      // setReadBtnDisabled(true); // Disable Read button if already in Read list
+      setWishlistBtnDisabled(true); // Disable Wishlist button if book is already read
+    } else if (wishlistBooks.includes(bookIdInt)) {
+      setWishlistBtnDisabled(true); // Disable Wishlist button if already in Wishlist
+    }
+  }, [bookIdInt]);
+
+  const handleReadBooks = () => {
+    saveReadBooks(bookIdInt);
+    toast.success("You've added the book to your Read Books!");
+    setWishlistBtnDisabled(true);
   };
 
+  const handleWishList = (e) => {
+    if (wishlistBtnDisabled) {
+      e.preventDefault();
+      toast.warning("the book is already in read");
+      return;
+    }
+    saveWishlistBooks(bookIdInt);
+    toast.success("You've added the book to your wishlist!");
+  };
   return (
     <div>
       <div className="card lg:card-side">
@@ -78,11 +107,15 @@ const BookDetails = () => {
             </p>
           </div>
           <div className="mt-5">
-            <Link className="border-2 px-7 py-4 rounded-md font-semibold mr-4 bg-none">
+            <Link
+              onClick={handleReadBooks}
+              className="border-2 px-7 py-4 rounded-md font-semibold mr-4 bg-none"
+            >
               Read
             </Link>
             <Link
               onClick={handleWishList}
+              disabled={wishlistBtnDisabled}
               className="border-2 border-[#50B1C9] px-7 py-4 rounded-md font-semibold mr-4 text-white bg-[#50B1C9]"
             >
               WishList

@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { FaAngleDown } from "react-icons/fa6";
 import { useLoaderData } from "react-router-dom";
-import { getStoredBook } from "../utility/localStorage";
+import { getStoredBooks } from "../utility/localStorage";
 import BookCard from "../BookCard/BookCard";
 
 const ListedBooks = () => {
   const books = useLoaderData();
-  const [seletedBooks, setSelectedBooks] = useState([]);
+
+  const { readBooks, setReadBooks } = useState([]);
+  const { wishlistBooks, setWishlistBooks } = useState([]);
+
   useEffect(() => {
-    const storedBookIds = getStoredBook();
+    const readBookIds = getReadBooks();
+    const wishlistBookIds = getWishlistBooks();
+    const storedBookIds = getStoredBooks();
     if (books.length > 0) {
       const listedBooks = books.filter((book) =>
         storedBookIds.includes(book.bookId)
@@ -56,7 +61,9 @@ const ListedBooks = () => {
             role="tabpanel"
             className="tab-content bg-base-100 border-y-base-300 rounded-box p-6"
           >
-            Read Books
+            {seletedBooks.map((book) => (
+              <BookCard key={book.bookId} book={book}></BookCard>
+            ))}
           </div>
 
           <input
