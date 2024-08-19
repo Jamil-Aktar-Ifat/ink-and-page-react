@@ -6,6 +6,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
+  ResponsiveContainer,
 } from "recharts";
 import { getReadBooks } from "../utility/localStorage";
 import { useState, useEffect } from "react";
@@ -49,28 +50,37 @@ const PagesToRead = () => {
   };
 
   return (
-    <div className="bg-[#13131308] rounded-lg py-10">
-      <BarChart
-        className="mx-auto"
-        width={1100}
-        height={600}
-        data={data}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="Name" />
-        <YAxis />
-        <Tooltip />
-        <Bar
-          dataKey="Pages"
-          shape={<TriangleBar />}
-          label={{ position: "top" }}
+    <div
+      className="bg-[#13131308] rounded-lg py-10"
+      style={{ width: "100%", height: 500 }}
+    >
+      <ResponsiveContainer>
+        {" "}
+        <BarChart
+          className="mx-auto"
+          width={1100}
+          height={600}
+          data={data}
+          margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
         >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-          ))}
-        </Bar>
-      </BarChart>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="Name" />
+          <YAxis />
+          <Tooltip />
+          <Bar
+            dataKey="Pages"
+            shape={<TriangleBar />}
+            label={{ position: "top" }}
+          >
+            {data.map((entry, index) => (
+              <Cell
+                key={`cell-${index}`}
+                fill={colors[index % colors.length]}
+              />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 };

@@ -21,20 +21,20 @@ const NavBar = () => {
               />
             </svg>
           </div>
-          {/* <ul
+          <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a>Home</a>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <a>Listed Books</a>
+              <NavLink to="/listedBooks">Listed Books</NavLink>
             </li>
             <li>
-              <a>Pages to Read</a>
+              <NavLink to="/pagesToRead">Pages to Read</NavLink>
             </li>
-          </ul> */}
+          </ul>
         </div>
         <Link to="/" className="btn btn-ghost text-2xl">
           Ink & Pages

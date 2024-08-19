@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 const BookCard = ({ book }) => {
   console.log(book);
   return (
-    <div className="card card-side bg-base-100 my-5 border-2 p-2">
-      <figure className="mt-10 bg-[#F3F3F3] rounded-sm m-8 p-5">
+    <div className="card card-side bg-base-100 my-5 border-2 md:p-2 md:flex grid">
+      <figure className="mt-10 bg-[#F3F3F3] rounded-sm md:m-8 md:p-5">
         <img
-          className="w-[130px] h-[180px]"
+          className="w-3/4 md:w-[130px] md:h-[180px]"
           src={book.image}
           alt={book.bookName}
         />
@@ -22,9 +22,9 @@ const BookCard = ({ book }) => {
         <div>
           <p className="font-medium">By: {book.author}</p>
         </div>
-        <div className="flex gap-3 items-center">
+        <div className="md:flex gap-3 items-center">
+          <div className="flex gap-3 items-center">
           <h2>Tags: </h2>
-          <div className="flex gap-3">
             {book.tags.map((tag, idx) => (
               <div key={idx}>
                 <p className="bg-[#23BE0A0D] text-[#23BE0A] px-3 py-2 rounded-lg">
@@ -38,7 +38,7 @@ const BookCard = ({ book }) => {
             <h2>Year of Publishing: {book.yearOfPublishing}</h2>
           </div>
         </div>
-        <div className="flex gap-3 items-center">
+        <div className="md:flex gap-3 items-center">
           <div className="flex gap-2 items-center">
             <GoPeople></GoPeople>
             <h2>Publisher: {book.author}</h2>
@@ -49,7 +49,7 @@ const BookCard = ({ book }) => {
           </div>
         </div>
         <hr className="my-3" />
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col md:flex-row items-center gap-4">
           <div>
             <p className="bg-[#91b3dd] text-blue-800 py-2 px-5 rounded-3xl">
               Category: {book.category}

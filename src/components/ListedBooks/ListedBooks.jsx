@@ -93,7 +93,7 @@ const ListedBooks = () => {
           />
           <div
             role="tabpanel"
-            className="tab-content bg-base-100 border-y-base-300 rounded-box p-6"
+            className="tab-content bg-base-100 border-y-base-300 rounded-box md:p-6"
           >
             {sortedReadBooks.length > 0 ? (
               sortedReadBooks.map((book) => (
@@ -113,7 +113,7 @@ const ListedBooks = () => {
           />
           <div
             role="tabpanel"
-            className="tab-content bg-base-100 border-y-base-300 rounded-box p-6"
+            className="tab-content bg-base-100 border-y-base-300 rounded-box md:p-6"
           >
             {sortedWishlistBooks.length > 0 ? (
               sortedWishlistBooks.map((book) => (
