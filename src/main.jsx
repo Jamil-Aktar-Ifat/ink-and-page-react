@@ -10,6 +10,7 @@ import ErrorPage from "./components/ErrorPage/ErrorPage";
 import BookDetails from "./components/BookDetails/BookDetails";
 
 const router = createBrowserRouter([
+  // routes
   {
     path: "/",
     element: <Root></Root>,
